@@ -50,22 +50,25 @@ def supermercado():
     try:
         # Solicita al usuario el monto de la compra y el tipo de membresía
         monto_compra = float(input("Ingrese el monto de la compra: "))
-        tipo_membresia = input("Ingrese el tipo de membresía (A,B,C): ") .upper() # Convierte la membresía a mayúscula para evitar errores de comparación
-        if tipo_membresia == 'A'or tipo_membresia == 'B'or tipo_membresia == 'C':
-            # Aplica descuento según el tipo de membresía y monto de compra
-            if tipo_membresia == "A" and monto_compra > 100:
-                descuento = 0.10
-            elif tipo_membresia == "B" and monto_compra > 250:
-                descuento= 0.15
-            elif tipo_membresia == "C" and monto_compra > 320:
-                descuento = 0.20
-            else:
-                descuento = 0.0 # Sin descuento si no se cumplen las condiciones anteriores            
-            # Calcular el total con descuento    
-            total_con_descuento= monto_compra * (1-descuento)
-            print(f"El total con descuento es: ${total_con_descuento:.2f}")
+        if monto_compra <= 0:
+            print("Error, el monto ingresado debe ser mayor a 0 ")
         else:
-            print("El tipo de membresia ingresada es erronea, intente nuevamente")   
+            tipo_membresia = input("Ingrese el tipo de membresía (A,B,C): ") .upper() # Convierte la membresía a mayúscula para evitar errores de comparación
+            if tipo_membresia == 'A'or tipo_membresia == 'B'or tipo_membresia == 'C':
+                # Aplica descuento según el tipo de membresía y monto de compra
+                if tipo_membresia == "A" and monto_compra > 100:
+                    descuento = 0.10
+                elif tipo_membresia == "B" and monto_compra > 250:
+                    descuento= 0.15
+                elif tipo_membresia == "C" and monto_compra > 320:
+                    descuento = 0.20
+                else:
+                    descuento = 0.0 # Sin descuento si no se cumplen las condiciones anteriores            
+                # Calcular el total con descuento    
+                total_con_descuento= monto_compra * (1-descuento)
+                print(f"El total con descuento es: ${total_con_descuento:.2f}")
+            else:
+                print("El tipo de membresia ingresada es erronea, intente nuevamente")   
     except ValueError:
         # Manejar errores si el usuario ingresa un valor no numérico
         print("Error: por favor, ingrese un monto válido.")
